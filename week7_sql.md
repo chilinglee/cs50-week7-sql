@@ -16,27 +16,27 @@ code for a text file containing all of your data
 
 ---
 ## 
-  ```py
-  # Gets a specific count
-  import csv
-  from collections import Counter
+```py
+# Gets a specific count
+import csv
+from collections import Counter
 
-  # Open CSV file
-  with open("favorites.csv", "r") as file:
-  # Create DictReader
-  reader = csv.DictReader(file)
+# Open CSV file
+with open("favorites.csv", "r") as file:
+# Create DictReader
+reader = csv.DictReader(file)
 
-  # Counts
-  counts = Counter()
-  # Iterate over CSV file, counting favorites
-  for row in reader:
-      favorite = row["problem"]
-      counts[favorite] += 1
+# Counts
+counts = Counter()
+# Iterate over CSV file, counting favorites
+for row in reader:
+    favorite = row["problem"]
+    counts[favorite] += 1
   
 # Print counts
 for favorite in sorted(counts):
     print(f"{favorite}: {counts[favorite]}")
-  ```
+```
 ---
 ## Relational Database
 
@@ -61,25 +61,25 @@ In relational database, you can really only do these four things.
 ## CREATE, INSERT
 
 - CREATE **table**
-```
+```SQL
 CREATE TABLE table (column type,...);
 ```
 
 - INSERT **data**
 
-```
+```SQL
 INSERT INTO table (column...) VALUES(value, ...);
 ```
 ---
 ##  ~~READ~~, SELECT
 
-```
+```SQL
 SELECT * FROM (table)
 ```
 ---
 ##  SELECT ... FROM (table);
 
-```
+```SQL
 AVG
 COUNT
 DISTINCT
@@ -91,7 +91,7 @@ UPPER
 
 ---
 ## SELECT * FROM (table) ...;
-```
+```SQL
 WHERE
 LIKE
 LIMIT
@@ -109,7 +109,7 @@ GROUP BY
 
 ---
 ## UPDATE
-```
+```SQL
 UPDATE favorites SET 
 language = 'SQL', problem = 'Fiftyvil'
 WHERE ...
@@ -117,23 +117,23 @@ WHERE ...
 
 ---
 ## DELETE, DROP
-  - DELETE **data**
-  ```
-  DELETE FROM favorites WHERE Timestamp IS NULL;
-  ```
-  - DROP **table**
-  ```
-  DROP TABLE table_name;
-  ```
+- DELETE **data**
+```SQL
+DELETE FROM favorites WHERE Timestamp IS NULL;
+```
+- DROP **table**
+```SQL
+DROP TABLE table_name;
+```
 
 ---
 ## 軟刪除
 
- ![image](https://chilinglee.github.io/cs50-week7-sql/images/softDelete.png)
+![image](https://chilinglee.github.io/cs50-week7-sql/images/softDelete.png)
 
- ```
- SELECT * FROM (table) WHERE deleteAt IS NOT NULL
- ```
+```SQL
+SELECT * FROM (table) WHERE deleteAt IS NOTNULL
+```
 
 ---
 ##  Why Ralational Database? 
@@ -153,19 +153,19 @@ Eliminating redundancy in data storage.
 ## TYPES in SQLite
 
 ```SQL
-  BLOB       -- binary large objects that are groups of ones and zeros
-  INTEGER    -- an integer
-  NUMERIC    -- for numbers that are formatted specially like dates
-  REAL       -- like a float
-  TEXT       -- for strings and the like
+BLOB       -- binary large objects that are groups of ones and zeros
+INTEGER    -- an integer
+NUMERIC    -- for numbers that are formatted specially like dates
+REAL       -- like a float
+TEXT       -- for strings and the like
 ```
 
 ---
 ## Contrains
 
 ```SQL
-  NOT NULL
-  UNIQUE
+NOT NULL
+UNIQUE
 ```
 ## 欄位大小限制
 
