@@ -287,21 +287,19 @@ A join is a query that combines data from two or more tables based on a common c
 
   > If you are sure about the application is going to search on certain columns frequently, you can prepare the database in advance to build up INDEX in memory. So the answer would get back faster.
 ---
+## B-tree  
+![image](https://chilinglee.github.io/cs50-week7-sql/images/H1wcXKI10.png)
+
+---
 ##
 ```
 -- CREATE INDEX name ON table (columns,...)
 CREATE INDEX title_index ON shows (title);
 ```
 ---
-## B-tree  
-![image](https://chilinglee.github.io/cs50-week7-sql/images/H1wcXKI10.png)
-
----
 ##
 - Primary key is automatically index.
 - Foreign keys are not.
-<br />
-  > 叢集索引/非叢集索引
 
 ---
 ## Why not index every column in every table? 
@@ -312,6 +310,9 @@ CREATE INDEX title_index ON shows (title);
 
 ### Wher to index
 將 index 建立在時常作爲 WHERE 條件的欄位
+<br/>
+
+>叢集索引/非叢集索引
 
 ---
 ## **Race Condition**
