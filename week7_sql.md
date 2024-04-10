@@ -422,11 +422,17 @@ UserModel.findByPk(id);
 
 - without schema, adjustable
 - big data storage
-- [horizontally scaling](https://medium.com/@eric248655665/rdbms-vs-nosql-%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-vs-%E9%9D%9E%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-1423c9fbb91a)
-- [初步認識分散式資料庫與 NoSQL CAP 理論](https://oldmo860617.medium.com/%E5%88%9D%E6%AD%A5%E8%AA%8D%E8%AD%98%E5%88%86%E6%95%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E8%88%87-nosql-cap-%E7%90%86%E8%AB%96-a02d377938d1)
+- horizontally scaling
 
 ---
 
 ## RDBMS v.s NoSQL
 
 ![image](https://chilinglee.github.io/cs50-week7-sql/images/sqlNosql.png)
+
+---
+## References
+- [[Rails 效能優化] 資料庫索引 Database Indexing](https://medium.com/@jinghua.shih/rails-%E7%B6%B2%E7%AB%99%E6%95%88%E8%83%BD%E5%84%AA%E5%8C%96-%E4%BA%8C-%E8%B3%87%E6%96%99%E5%BA%AB%E7%B4%A2%E5%BC%95-database-index-bd89fa3757a)
+- [RDBMS vs. NOSQL | 關聯式資料庫 vs. 非關聯式資料庫](https://medium.com/@eric248655665/rdbms-vs-nosql-%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-vs-%E9%9D%9E%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-1423c9fbb91a)
+- [初步認識分散式資料庫與 NoSQL CAP 理論](https://oldmo860617.medium.com/%E5%88%9D%E6%AD%A5%E8%AA%8D%E8%AD%98%E5%88%86%E6%95%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E8%88%87-nosql-cap-%E7%90%86%E8%AB%96-a02d377938d1)
+- [高併發情況下正確處理共享資料筆記](https://blog.twjoin.com/%E9%AB%98%E4%BD%B5%E7%99%BC%E6%83%85%E6%B3%81%E4%B8%8B%E6%AD%A3%E7%A2%BA%E8%99%95%E7%90%86%E5%85%B1%E4%BA%AB%E8%B3%87%E6%96%99%E7%AD%86%E8%A8%98-5e80ab488686)
