@@ -146,7 +146,7 @@ Eliminating redundancy in data storage.
 ![image](/images/datasample.png)
 <br />
 
-### Schema
+### table schema
 ![image](/images/columnsInMSSQL.png)
 
 ---
@@ -174,6 +174,12 @@ Eliminating redundancy in data storage.
 ---
 ## [IMDb](https://www.imdb.com/)
 ![width:1000px](/images/cs50Week7Slide025.png)
+
+---
+## Relations
+- one-to-one
+- one-to-many
+- many-to-many
 
 ---
 ## one-to-one relationship
@@ -294,6 +300,8 @@ CREATE INDEX title_index ON shows (title);
 ##
 - Primary key is automatically index.
 - Foreign keys are not.
+<br />
+  > 叢集索引/非叢集索引
 
 ---
 ## Why not index every column in every table? 
@@ -315,7 +323,7 @@ CREATE INDEX title_index ON shows (title);
   ![width:520px](/images/race%20condition.jpg)
 
 ---
-##    
+## Transaction
   - `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK` can sort of help this problem. Transaction means your code should work all together, or not at all. **atomic**, **not being interupted**.
 > 在資料庫的每一筆交易中只有兩種可能發生，第一種是全部完全(commit)，第二種是全部不完成(rollback)
   - **lock**
