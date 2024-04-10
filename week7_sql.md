@@ -33,9 +33,9 @@ code for a text file containing all of your data
       favorite = row["problem"]
       counts[favorite] += 1
   
-  # Print count
-  favorite = input("Favorite: ")
-  print(f"{favorite}: {counts[favorite]}")
+# Print counts
+for favorite in sorted(counts):
+    print(f"{favorite}: {counts[favorite]}")
   ```
 ---
 ## Relational Database
@@ -141,12 +141,16 @@ Eliminating redundancy in data storage.
 
 ![width:400px](/images/redundancyDatabase.png)
 
----
-##
-![image](/images/cs50Week7Slide025.png)
+--- 
+### data
+![image](/images/datasample.png)
+<br />
+
+### Schema
+![image](/images/columnsInMSSQL.png)
 
 ---
-## TYPES in SQL
+## TYPES in SQLite
 
 ```SQL
   BLOB       -- binary large objects that are groups of ones and zeros
@@ -166,6 +170,10 @@ Eliminating redundancy in data storage.
 ## 欄位大小限制
 
 ![image](/images/columnsInMSSQL.png)
+
+---
+## [IMDb](https://www.imdb.com/)
+![width:1000px](/images/cs50Week7Slide025.png)
 
 ---
 ## one-to-one relationship
@@ -221,8 +229,7 @@ LIMIT 10;
 
 ```SQL
 SELECT * FROM shows
-JOIN genres
-ON shows.id = genres.show_id
+JOIN genres ON shows.id = genres.show_id
 WHERE id = 63881;
 ```
 ---
@@ -234,8 +241,8 @@ WHERE id = 63881;
 ```SQL
 SELECT person_id FROM stars
 WHERE show_id = (
-SELECT id FROM shows
-WHERE title = 'The Office' AND year = 2005
+  SELECT id FROM shows
+  WHERE title = 'The Office' AND year = 2005
 );
 ```
 ---
@@ -251,29 +258,17 @@ WHERE id IN (
 );
 ```
 ---
-##
-```SQL
-SELECT title from shows
-WHERE id IN (
-  SELECT show_id FROM stars
-  WHERE person_id = (
-    SELECT id FROM people
-    WHERE name = 'Steve Carell'
-  )
-);
-```
----
 ## Subquery
 A subquery is a query that is nested inside another query.
 ## JOIN 
 A join is a query that combines data from two or more tables based on a common column or condition.
 
-> Performance ： depends on db 
+> Performance： depends on db 
 > Readability
 > Flexibility
 
 ---
-## 
+## When building relations...
 
 - CREATE/UPDATE/DELETE 維持資料完整性
 - 複雜的關聯會影響效能，需優化查詢
@@ -297,17 +292,17 @@ CREATE INDEX title_index ON shows (title);
 
 ---
 ##
-Primary key is automatically index.
-Foreign keys are not.
+- Primary key is automatically index.
+- Foreign keys are not.
 
 ---
 ## Why not index every column in every table? 
 
-Becus indexes take more memories or spaces, **trading off spaces for time.**
+- Becus indexes take more memories or spaces, **trading off spaces for time.**
 
-> 有 index 的 table 做資料操作時會耗費較多效能，因爲需要重新建立索引表
+- 有 index 的 table 做資料操作時會耗費較多效能，因爲需要重新建立索引表
 
-### WHERE
+### Wher to index
 將 index 建立在時常作爲 WHERE 條件的欄位
 
 ---
