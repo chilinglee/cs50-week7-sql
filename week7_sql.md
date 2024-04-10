@@ -12,7 +12,7 @@ code for a text file containing all of your data
   - .csv : comma-seperated values 
   - rows and cloumns
 
-![image](/images/flatdatabase.png)
+![image](./images/flatdatabase.png)
 
 ---
 ## 
@@ -101,11 +101,11 @@ GROUP BY
 
 ---
 ##
-  ![image](/images/HkqzY8rJR.png)
+  ![image](./images/HkqzY8rJR.png)
 
 ---
 ##
-  ![image](/images/SJv2KUHJA.png)
+  ![image](./images/SJv2KUHJA.png)
 
 ---
 ## UPDATE
@@ -129,7 +129,7 @@ WHERE ...
 ---
 ## 軟刪除
 
- ![image](/images/softDelete.png)
+ ![image](./images/softDelete.png)
 
  ```
  SELECT * FROM (table) WHERE deleteAt IS NOT NULL
@@ -139,15 +139,15 @@ WHERE ...
 ##  Why Ralational Database? 
 Eliminating redundancy in data storage.
 
-![width:400px](/images/redundancyDatabase.png)
+![width:400px](./images/redundancyDatabase.png)
 
 --- 
 ### data
-![image](/images/datasample.png)
+![image](./images/datasample.png)
 <br />
 
 ### table schema
-![image](/images/columnsInMSSQL.png)
+![image](./images/columnsInMSSQL.png)
 
 ---
 ## TYPES in SQLite
@@ -169,11 +169,11 @@ Eliminating redundancy in data storage.
 ```
 ## 欄位大小限制
 
-![image](/images/columnsInMSSQL.png)
+![image](./images/columnsInMSSQL.png)
 
 ---
 ## [IMDb](https://www.imdb.com/)
-![width:1000px](/images/cs50Week7Slide025.png)
+![width:1000px](./images/cs50Week7Slide025.png)
 
 ---
 ## Relations
@@ -188,7 +188,7 @@ Eliminating redundancy in data storage.
 
 ---
 ## Schema
-![width:750px](/images/ryWMaB8kA.png)
+![width:750px](./images/ryWMaB8kA.png)
 
 ---
 ## Primary key 主鍵 & Foreign key 外鍵
@@ -212,7 +212,7 @@ WHERE id IN (
 ---
 ### Subquery
 
-![width:1200px](/images/rk2hQ_8J0.png)
+![width:1200px](./images/rk2hQ_8J0.png)
 
 ---
 ### JOIN
@@ -224,11 +224,11 @@ WHERE rating >= 6.0
 LIMIT 10;
 ```
 
-![image](/images/titlerating.png)
+![image](./images/titlerating.png)
 
 ---
 ## one-to-many relationship
-![width:750px](/images/one-to-many.png)
+![width:750px](./images/one-to-many.png)
 
 --- 
 ## one-to-many relationship
@@ -240,7 +240,7 @@ WHERE id = 63881;
 ```
 ---
 ## many-to-many relationship
-![image](/images/r1Fend8yC.png)
+![image](./images/r1Fend8yC.png)
 
 ---
 ##
@@ -294,7 +294,7 @@ CREATE INDEX title_index ON shows (title);
 ```
 ---
 ## B-tree  
-![image](/images/H1wcXKI10.png)
+![image](./images/H1wcXKI10.png)
 
 ---
 ##
@@ -320,7 +320,7 @@ CREATE INDEX title_index ON shows (title);
 ---
 ## **Race Condition**
 
-  ![width:520px](/images/race%20condition.jpg)
+  ![width:520px](./images/race%20condition.jpg)
 
 ---
 ## Transaction
@@ -353,7 +353,7 @@ e.g. cs50 sql library 會處理掉 escape word 的問題
 ---
 ## ORM
 Object Relational Mapping
-![width:900px](/images/ORM.png)
+![width:900px](./images/ORM.png)
 
 ---
 ## ORM
@@ -410,12 +410,12 @@ UserModel.findByPk(id);
 ---
 ## NoSQL
 - **collections** and **documents**, e.g MongoDB
-![height:500px](/images/doc.png)
+![height:500px](.images/doc.png)
 
 --- 
 ## NoSQL
 - **key-value**, e.g. redis
-![image](/images/key-value.png)
+![image](./images/key-value.png)
 
 --- 
 ## NoSQL
@@ -429,4 +429,4 @@ UserModel.findByPk(id);
 
 ## RDBMS v.s NoSQL
 
-![image](/images/sqlNosql.png)
+![image](./images/sqlNosql.png)
