@@ -45,7 +45,7 @@ Different from csv, it could have manysheets with relations
 ---
 ## SQL
 
-Database specific language, standard for **StructuredQuery Language**. It's a declaritive language, which means you would not have 'if else condition' or 'for loop' in this language. You will gonna describe the data you want to get back. 
+Database specific language, standard for **Structured Query Language**. It's a **declaritive** language, which means you would not have 'if else condition' or 'for loop' in this language. You will gonna describe the data you want to get back. 
 
 ---
 ## CRUD
@@ -163,8 +163,9 @@ Eliminating redundancy in data storage.
   NOT NULL
   UNIQUE
 ```
+## 欄位大小限制
 
-> 欄位大小
+![image](/images/columnsInMSSQL.png)
 
 ---
 ## one-to-one relationship
@@ -172,20 +173,20 @@ Eliminating redundancy in data storage.
 ![image](https://cs50.harvard.edu/x/2024/notes/7/cs50Week7Slide032.png)
 
 ---
-##
-![image](/images/ryWMaB8kA.png)
+## Schema
+![width:750px](/images/ryWMaB8kA.png)
 
 ---
 ## Primary key 主鍵 & Foreign key 外鍵
 
-  - Primary key 主鍵: unique id (每張表都會有的 key，每一筆資料的 id)
+  - Primary key 主鍵: unique id (基本上每張表都會有的 key，每一筆資料的 id)
   - Foriegn key 外鍵 : simply the present of primary key in some other table, used to build relationships between tables by pointing to the primary key in another table.
 
 ---
 ## one-to-one relationship
-
+### Subquery
 ```SQL
-SELECT title
+SELECT *
 FROM shows
 WHERE id IN (
     SELECT show_id
@@ -195,20 +196,25 @@ WHERE id IN (
 )
 ```
 ---
-##
-![image](/images/rk2hQ_8J0.png)
+### Subquery
+
+![width:1200px](/images/rk2hQ_8J0.png)
 
 ---
-##
-``` =SQL
-SELECT * FROM shows
+### JOIN
+``` SQL
+SELECT title, rating
+FROM shows
 JOIN ratings on shows.id = ratings.show_id
 WHERE rating >= 6.0
 LIMIT 10;
 ```
+
+![image](/images/titlerating.png)
+
 ---
 ## one-to-many relationship
-![image](/images/one-to-many.png)
+![width:750px](/images/one-to-many.png)
 
 --- 
 ## one-to-many relationship
@@ -257,13 +263,23 @@ WHERE id IN (
 );
 ```
 ---
-##
+## Subquery
+A subquery is a query that is nested inside another query.
+## JOIN 
+A join is a query that combines data from two or more tables based on a common column or condition.
 
-- JOIN 比較慢
+> Performance ： depends on db 
+> Readability
+> Flexibility
 
-> 補充説明：爲什麽 JOIN 比較慢
+---
+## 
 
-> 補充説明：實務上，建立關聯會耗費比較多的效能，在 CRAETE UPDATE 時，要刪除資料的時候，也會有限制。在建立資料的時考慮這一點
+- CREATE/UPDATE/DELETE 維持資料完整性
+- 複雜的關聯會影響效能，需優化查詢
+- QUERY 適當建立 INDEX 提高查詢效能
+
+
 ---
 ## **Index**
   A data structure that makes it faster to perform queries.
@@ -281,27 +297,33 @@ CREATE INDEX title_index ON shows (title);
 
 ---
 ##
-- Primary key is automatically index.Foreign keys are not.
-- WHERE columns
+Primary key is automatically index.
+Foreign keys are not.
 
 ---
 ## Why not index every column in every table? 
 
 Becus indexes take more memories or spaces, **trading off spaces for time.**
 
-> 有 index 的 table 做資料處理時會耗費較多效能，因爲需要重新建立索引表
+> 有 index 的 table 做資料操作時會耗費較多效能，因爲需要重新建立索引表
+
+### WHERE
+將 index 建立在時常作爲 WHERE 條件的欄位
 
 ---
 ## **Race Condition**
-  - 冰箱沒有牛奶
+  冰箱沒有牛奶
 
-  ![width:480px](/images/race%20condition.jpg)
+---
+## **Race Condition**
+
+  ![width:520px](/images/race%20condition.jpg)
 
 ---
 ##    
   - `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK` can sort of help this problem. Transaction means your code should work all together, or not at all. **atomic**, **not being interupted**.
+> 在資料庫的每一筆交易中只有兩種可能發生，第一種是全部完全(commit)，第二種是全部不完成(rollback)
   - **lock**
-  > updating multiple tables
 ---
 
 ## **SQL Injection**
@@ -316,13 +338,14 @@ rows = db.execute(f"SELECT COUNT(*) FROM users WHERE username = {username} AND p
 --- 
 ## How to Prevent SQL Injection
 
-- 不要用字串插補，要用參數
+### 不要用字串插補，使用參數
 
 ```py
 rows = db.execute("SELECT COUNT(*) FROM users WHERE username = ? AND password = ?", username, password")
 ```
 
-- **ORM**, e.g. cs50 sql library 會處理掉 escape word 的問題
+### 使用 ORM
+e.g. cs50 sql library 會處理掉 escape word 的問題
 
 ---
 ## ORM
@@ -382,4 +405,25 @@ After
 UserModel.findByPk(id);
 ```
 ---
-## Mongo DB
+## NoSQL
+- **collections** and **documents**, e.g MongoDB
+![height:500px](/images/doc.png)
+
+--- 
+## NoSQL
+- **key-value**, e.g. redis
+![image](/images/key-value.png)
+
+--- 
+## NoSQL
+
+- without schema, adjustable
+- big data storage
+- [horizontally scaling](https://medium.com/@eric248655665/rdbms-vs-nosql-%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-vs-%E9%9D%9E%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB-1423c9fbb91a)
+- [初步認識分散式資料庫與 NoSQL CAP 理論](https://oldmo860617.medium.com/%E5%88%9D%E6%AD%A5%E8%AA%8D%E8%AD%98%E5%88%86%E6%95%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E8%88%87-nosql-cap-%E7%90%86%E8%AB%96-a02d377938d1)
+
+---
+
+## RDBMS v.s NoSQL
+
+![image](/images/sqlNosql.png)
